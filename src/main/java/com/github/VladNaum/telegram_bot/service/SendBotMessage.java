@@ -1,6 +1,6 @@
-package com.github.VladNaum.MyTelegramBot.service;
+package com.github.VladNaum.telegram_bot.service;
 
-import com.github.VladNaum.MyTelegramBot.bot.MyTB;
+import com.github.VladNaum.telegram_bot.bot.MyTB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;

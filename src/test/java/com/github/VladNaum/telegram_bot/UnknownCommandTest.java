@@ -1,9 +1,9 @@
-package com.github.VladNaum.MyTelegramBot;
+package com.github.VladNaum.telegram_bot;
 
-import com.github.VladNaum.MyTelegramBot.command.Command;
-import com.github.VladNaum.MyTelegramBot.command.UnknownCommand;
+import com.github.VladNaum.telegram_bot.command.Command;
+import com.github.VladNaum.telegram_bot.command.UnknownCommand;
 
-import static com.github.VladNaum.MyTelegramBot.command.UnknownCommand.UNKNOWN_MESS;
+import static com.github.VladNaum.telegram_bot.command.UnknownCommand.UNKNOWN_MESS;
 
 public class UnknownCommandTest extends AbstractCommandTest {
     @Override

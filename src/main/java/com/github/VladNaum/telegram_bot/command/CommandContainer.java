@@ -1,10 +1,9 @@
-package com.github.VladNaum.MyTelegramBot.command;
+package com.github.VladNaum.telegram_bot.command;
 
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessageService;
+import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import com.google.common.collect.ImmutableMap;
 
-import static com.github.VladNaum.MyTelegramBot.command.CommandName.*;
-import static java.util.stream.Stream.builder;
+import static com.github.VladNaum.telegram_bot.command.CommandName.*;
 
 public class CommandContainer {
     private final ImmutableMap<String, Command> commandMap;

@@ -1,11 +1,11 @@
-package com.github.VladNaum.MyTelegramBot;
+package com.github.VladNaum.telegram_bot;
 
-import com.github.VladNaum.MyTelegramBot.command.Command;
-import com.github.VladNaum.MyTelegramBot.command.NoCommand;
+import com.github.VladNaum.telegram_bot.command.Command;
+import com.github.VladNaum.telegram_bot.command.NoCommand;
 import org.junit.jupiter.api.DisplayName;
 
-import static com.github.VladNaum.MyTelegramBot.command.CommandName.NO;
-import static com.github.VladNaum.MyTelegramBot.command.NoCommand.NO_MESS;
+import static com.github.VladNaum.telegram_bot.command.CommandName.NO;
+import static com.github.VladNaum.telegram_bot.command.NoCommand.NO_MESS;
 
 @DisplayName("Unit-level testing for NoCommand")
 public class NoCommandTest extends AbstractCommandTest {

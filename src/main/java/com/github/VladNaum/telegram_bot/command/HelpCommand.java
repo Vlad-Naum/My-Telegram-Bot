@@ -1,9 +1,9 @@
-package com.github.VladNaum.MyTelegramBot.command;
+package com.github.VladNaum.telegram_bot.command;
 
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessageService;
+import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import static com.github.VladNaum.MyTelegramBot.command.CommandName.*;
+import static com.github.VladNaum.telegram_bot.command.CommandName.*;
 
 public class HelpCommand implements Command {
     private final SendBotMessageService sendBotMessageService;

@@ -1,4 +1,4 @@
-package com.github.VladNaum.MyTelegramBot;
+package com.github.VladNaum.telegram_bot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,9 +1,9 @@
-package com.github.VladNaum.MyTelegramBot;
+package com.github.VladNaum.telegram_bot;
 
-import com.github.VladNaum.MyTelegramBot.bot.MyTB;
-import com.github.VladNaum.MyTelegramBot.command.Command;
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessage;
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessageService;
+import com.github.VladNaum.telegram_bot.bot.MyTB;
+import com.github.VladNaum.telegram_bot.command.Command;
+import com.github.VladNaum.telegram_bot.service.SendBotMessage;
+import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;

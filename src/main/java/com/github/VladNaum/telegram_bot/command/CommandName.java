@@ -1,4 +1,4 @@
-package com.github.VladNaum.MyTelegramBot.command;
+package com.github.VladNaum.telegram_bot.command;
 
 public enum CommandName {
 

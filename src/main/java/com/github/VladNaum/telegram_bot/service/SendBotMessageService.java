@@ -1,4 +1,4 @@
-package com.github.VladNaum.MyTelegramBot.service;
+package com.github.VladNaum.telegram_bot.service;
 
    /*
    Сервис для отправки сообщений в телеграмм.

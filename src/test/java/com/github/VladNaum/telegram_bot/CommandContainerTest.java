@@ -1,10 +1,10 @@
-package com.github.VladNaum.MyTelegramBot;
+package com.github.VladNaum.telegram_bot;
 
-import com.github.VladNaum.MyTelegramBot.command.Command;
-import com.github.VladNaum.MyTelegramBot.command.CommandContainer;
-import com.github.VladNaum.MyTelegramBot.command.CommandName;
-import com.github.VladNaum.MyTelegramBot.command.UnknownCommand;
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessageService;
+import com.github.VladNaum.telegram_bot.command.Command;
+import com.github.VladNaum.telegram_bot.command.CommandContainer;
+import com.github.VladNaum.telegram_bot.command.CommandName;
+import com.github.VladNaum.telegram_bot.command.UnknownCommand;
+import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;

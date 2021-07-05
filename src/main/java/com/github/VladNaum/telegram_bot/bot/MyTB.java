@@ -1,15 +1,13 @@
-package com.github.VladNaum.MyTelegramBot.bot;
+package com.github.VladNaum.telegram_bot.bot;
 
-import com.github.VladNaum.MyTelegramBot.command.CommandContainer;
-import com.github.VladNaum.MyTelegramBot.service.SendBotMessage;
+import com.github.VladNaum.telegram_bot.command.CommandContainer;
+import com.github.VladNaum.telegram_bot.service.SendBotMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import static com.github.VladNaum.MyTelegramBot.command.CommandName.NO;
+import static com.github.VladNaum.telegram_bot.command.CommandName.NO;
 
 @Component
 public class MyTB extends TelegramLongPollingBot {
