@@ -2,6 +2,8 @@ package com.github.VladNaum.telegram_bot.bot;
 
 import com.github.VladNaum.telegram_bot.command.CommandContainer;
 import com.github.VladNaum.telegram_bot.service.SendBotMessage;
+import com.github.VladNaum.telegram_bot.weather.JsonParser;
+import com.github.VladNaum.telegram_bot.weather.Weather;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -37,7 +39,9 @@ public class MyTB extends TelegramLongPollingBot {
                 container.retrievCommand(commandIdentifier).execute(update);
             }
             else{
-                container.retrievCommand(NO.getCommandName()).execute(update);
+                Weather weather = JsonParser.parser(message.toLowerCase());
+                new SendBotMessage(this).sendMessage(update.getMessage().getChatId().toString(), weather.toString());
+                //container.retrievCommand(NO.getCommandName()).execute(update);
             }
         }
     }
