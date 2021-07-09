@@ -1,18 +1,18 @@
 package com.github.VladNaum.telegram_bot.weather;
 
+import com.github.VladNaum.telegram_bot.exception.IncorrectCityException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class JsonParser {
     private static final String apiKey = "04bf680b29855a1596ff020020b6af89";
 
-    public static Weather parser(String city){
+    public static Weather parser(String city) throws IncorrectCityException {
         String url = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&lang=ru",
                 city.toLowerCase(), apiKey);
         try(InputStream is = new URL(url).openStream();
@@ -29,16 +29,12 @@ public class JsonParser {
             String cityName = json.get("name").getAsString();
             String description = weather.get(0).getAsJsonObject().get("description").getAsString();
 
-            SimpleDateFormat formater = new SimpleDateFormat("dd.MM.YYYY");
-            Date date = new Date();
-
-            return new Weather(cityName, description,temperature, windSpeed, date);
+            return new Weather(cityName, description,temperature, windSpeed, new Date());
 
         }
-        catch(IOException e){
-            e.printStackTrace();
+        catch(Exception e){
+            throw new IncorrectCityException(city);
         }
-        return null;
     }
 
     private static String readAll(Reader rd) throws IOException {

@@ -6,4 +6,5 @@ package com.github.VladNaum.telegram_bot.service;
 public interface SendBotMessageService {
 
     void sendMessage(String chatId, String message);
+
 }
