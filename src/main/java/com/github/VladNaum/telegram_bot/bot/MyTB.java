@@ -2,9 +2,12 @@ package com.github.VladNaum.telegram_bot.bot;
 
 import com.github.VladNaum.telegram_bot.exception.IncorrectCityException;
 import com.github.VladNaum.telegram_bot.command.CommandContainer;
+import com.github.VladNaum.telegram_bot.repo.WeatherRepos;
 import com.github.VladNaum.telegram_bot.service.SendBotMessage;
+import com.github.VladNaum.telegram_bot.service.WeatherServiceImpl;
 import com.github.VladNaum.telegram_bot.weather.JsonParser;
 import com.github.VladNaum.telegram_bot.weather.Weather;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -21,6 +24,9 @@ public class MyTB extends TelegramLongPollingBot {
 
     @Value("${bot.token}")
     private String token;
+
+    @Autowired
+    private WeatherRepos weatherRepos;
 
     private final CommandContainer container;
 
@@ -43,6 +49,7 @@ public class MyTB extends TelegramLongPollingBot {
             else{
                 try {
                     Weather weather = JsonParser.parser(message.toLowerCase());
+                    new WeatherServiceImpl(weatherRepos).save(weather);
                     new SendBotMessage(this)
                             .sendMessage(update.getMessage().getChatId().toString(), weather.toString());
                 } catch (IncorrectCityException e) {
