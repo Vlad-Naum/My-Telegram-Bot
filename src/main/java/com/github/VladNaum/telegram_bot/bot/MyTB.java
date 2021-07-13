@@ -68,7 +68,7 @@ public class MyTB extends TelegramLongPollingBot {
     }
 
     /*
-    Метод requestCkeck проверяет не превышен ли лимит запросов для данного города.
+    Метод requestCheck проверяет не превышен ли лимит запросов для данного города.
     Можно делать запросы для одного города не чаще 10 минут.
      */
     public boolean requestCheck(String city) throws CountOfRequestException{

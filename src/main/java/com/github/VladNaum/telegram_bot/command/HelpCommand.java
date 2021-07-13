@@ -12,7 +12,9 @@ public class HelpCommand implements Command {
                     + "<b>Начать\\закончить работу с ботом</b>\n"
                     + "%s - начать работу со мной\n"
                     + "%s - приостановить работу со мной\n\n"
-                    + "%s - получить помощь в работе со мной\n",
+                    + "%s - получить помощь в работе со мной\n"
+                    + "\nЧтобы получить погоду, напишите название города на русском языке."
+                    + "Запрашивать погоду в одном городе можно не чаще одного раза в час.",
             START.getCommandName(), STOP.getCommandName(), HELP.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
