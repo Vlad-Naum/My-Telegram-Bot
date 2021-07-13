@@ -32,15 +32,19 @@ public class Weather {
     @Column(name = "Description")
     private String description;
 
+    public static SimpleDateFormat formater = new SimpleDateFormat("dd.MM.YYYY");
+    public static SimpleDateFormat formater2 = new SimpleDateFormat("HH:mm:ss");
+
     public Weather(String city, String description, int temperature, int windSpeed, Date date) {
-        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.YYYY");
-        SimpleDateFormat formater2 = new SimpleDateFormat("HH:mm:ss");
         this.city = city;
         this.description = description;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.date = formater.format(date);
         this.time = formater2.format(date);
+    }
+
+    public Weather() {
     }
 
     @Override
@@ -50,5 +54,17 @@ public class Weather {
                 + " C\nСкорость ветра: " + windSpeed + " м/с" + "\n"
                 + description.substring(0,1).toUpperCase() + description.substring(1);
 
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getTime() {
+        return time;
     }
 }
