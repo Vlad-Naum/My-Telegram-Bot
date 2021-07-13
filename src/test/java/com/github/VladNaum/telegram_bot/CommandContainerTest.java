@@ -1,9 +1,6 @@
 package com.github.VladNaum.telegram_bot;
 
-import com.github.VladNaum.telegram_bot.command.Command;
-import com.github.VladNaum.telegram_bot.command.CommandContainer;
-import com.github.VladNaum.telegram_bot.command.CommandName;
-import com.github.VladNaum.telegram_bot.command.UnknownCommand;
+import com.github.VladNaum.telegram_bot.command.*;
 import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,22 +19,20 @@ public class CommandContainerTest {
     }
 
     @Test
-    public void shouldGetAllTheExistingCommands(){
-        for (CommandName name : CommandName.values()) {
-            Command command = commandContainer.retrievCommand(name.getCommandName());
-            Assert.assertNotEquals(UnknownCommand.class, command.getClass());
-        }
+    public void shouldGetStartCommand(){
+        Command command = commandContainer.retrievCommand(CommandName.START.getCommandName());
+        Assert.assertEquals(StartCommand.class, command.getClass());
     }
 
     @Test
-    public void shouldReturnUnknownCommand(){
-        //given
-        String unknown = "/rettt";
+    public void shouldGetStopCommand(){
+        Command command = commandContainer.retrievCommand(CommandName.STOP.getCommandName());
+        Assert.assertEquals(StopCommand.class, command.getClass());
+    }
 
-        //when
-        Command command = commandContainer.retrievCommand(unknown);
-
-        //then
-        Assert.assertEquals(UnknownCommand.class, command.getClass());
+    @Test
+    public void shouldGetHelpCommand(){
+        Command command = commandContainer.retrievCommand(CommandName.HELP.getCommandName());
+        Assert.assertEquals(HelpCommand.class, command.getClass());
     }
 }

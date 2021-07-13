@@ -6,8 +6,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class StartCommand implements Command {
     private final SendBotMessageService sendBotMessageService;
 
-    public final static String START_MESS = "Привет. Я телеграмм-бот. " +
-            "Пока, что мой функционал оганичен, но все впереди.";
+    public final static String START_MESS = "Привет. Я телеграмм-бот, который может показывать погоду. " +
+            "Напиши название города на русском языке.";
 
     public StartCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
