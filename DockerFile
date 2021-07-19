@@ -1,6 +1,0 @@
-FROM adoptopenjdk/openjdk15-openj9:latest
-ARG JAR_FILE=target/*.jar
-ENV BOT_NAME=VladNaum_bot
-ENV BOT_TOKEN=1876610271:AAG9BaRuE35JRz-vJ2XDLomnkhflsg45veo
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-Dbot.username=${BOT_NAME}", "-Dbot.token=${BOT_TOKEN}", "-jar", "/app.jar"]
