@@ -48,6 +48,7 @@ public class MyTB extends TelegramLongPollingBot {
                 } catch (IncorrectCityException e) {
                     new SendBotMessage(this)
                             .sendMessage(update.getMessage().getChatId().toString(), e.getMessage());
+                    e.printStackTrace();
                 }
 
             }

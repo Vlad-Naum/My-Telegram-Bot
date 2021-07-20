@@ -3,11 +3,14 @@ package com.github.VladNaum.telegram_bot.weather;
 import com.github.VladNaum.telegram_bot.exception.IncorrectCityException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+
 
 public class JsonParser {
     private static final String apiKey = "04bf680b29855a1596ff020020b6af89";
@@ -33,6 +36,7 @@ public class JsonParser {
 
         }
         catch(Exception e){
+            e.printStackTrace();
             throw new IncorrectCityException(city);
         }
     }

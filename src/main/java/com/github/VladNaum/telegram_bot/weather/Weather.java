@@ -1,7 +1,10 @@
 package com.github.VladNaum.telegram_bot.weather;
 
+import org.springframework.stereotype.Component;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Weather {
     private String city;
