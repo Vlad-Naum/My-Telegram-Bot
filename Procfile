@@ -1,1 +1,1 @@
-worker: java -jar target/My-Telegram-Bot-0.0.1-SNAPSHOT.jar
+worker: java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -cp ./target/classes:./target/dependency/* com.github.VladNaum.telegram_bot.MyTelegramBotApplication
