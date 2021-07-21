@@ -1,1 +1,1 @@
-web: sh target/bin/worker
+worker: java -jar target/My-Telegram-Bot-0.0.1-SNAPSHOT.jar
