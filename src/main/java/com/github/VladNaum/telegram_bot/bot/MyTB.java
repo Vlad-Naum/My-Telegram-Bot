@@ -16,12 +16,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Component
 public class MyTB extends TelegramLongPollingBot {
 
-    @Value("${bot.username}")
-    private String userName;
-
-    @Value("${bot.token}")
-    private String token;
-
     private final CommandContainer container;
 
     public MyTB(){
@@ -57,11 +51,11 @@ public class MyTB extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return userName;
+        return System.getenv("username");
     }
 
     @Override
     public String getBotToken() {
-        return token;
+        return System.getenv("token");
     }
 }
