@@ -1,13 +1,6 @@
 package com.github.VladNaum.telegram_bot;
 
-<<<<<<< HEAD
-import com.github.VladNaum.telegram_bot.command.Command;
-import com.github.VladNaum.telegram_bot.command.CommandContainer;
-import com.github.VladNaum.telegram_bot.command.CommandName;
-import com.github.VladNaum.telegram_bot.command.StartCommand;
-=======
 import com.github.VladNaum.telegram_bot.command.*;
->>>>>>> heroku
 import com.github.VladNaum.telegram_bot.service.SendBotMessageService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,21 +27,13 @@ public class CommandContainerTest {
     @Test
     public void shouldGetStopCommand(){
         Command command = commandContainer.retrievCommand(CommandName.STOP.getCommandName());
-<<<<<<< HEAD
-        Assert.assertEquals(StartCommand.class, command.getClass());
-=======
         Assert.assertEquals(StopCommand.class, command.getClass());
->>>>>>> heroku
     }
 
     @Test
     public void shouldGetHelpCommand(){
         Command command = commandContainer.retrievCommand(CommandName.HELP.getCommandName());
-<<<<<<< HEAD
-        Assert.assertEquals(StartCommand.class, command.getClass());
-=======
         Assert.assertEquals(HelpCommand.class, command.getClass());
->>>>>>> heroku
     }
 
 }

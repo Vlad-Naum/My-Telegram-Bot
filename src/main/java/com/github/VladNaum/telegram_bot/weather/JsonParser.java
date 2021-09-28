@@ -14,8 +14,9 @@ public class JsonParser {
     public static Weather parser(String city) throws IncorrectCityException {
         String url = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&lang=ru",
                 city.toLowerCase(), apiKey);
-        try(InputStream is = new URL(url).openStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))){
+        try (InputStream is = new URL(url).openStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+
             String jsonText = readAll(rd);
             JsonObject json = new com.google.gson.JsonParser().parse(jsonText).getAsJsonObject();
 
@@ -30,8 +31,7 @@ public class JsonParser {
 
             return new Weather(cityName, description,temperature, windSpeed);
 
-        }
-        catch(Exception e){
+        } catch(Exception e) {
             e.printStackTrace();
             throw new IncorrectCityException(city);
         }
