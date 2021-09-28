@@ -5,13 +5,11 @@ import com.github.VladNaum.telegram_bot.command.CommandContainer;
 import com.github.VladNaum.telegram_bot.service.SendBotMessage;
 import com.github.VladNaum.telegram_bot.weather.JsonParser;
 import com.github.VladNaum.telegram_bot.weather.Weather;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.time.Instant;
 
 @Component
 public class MyTB extends TelegramLongPollingBot {
@@ -30,6 +28,7 @@ public class MyTB extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()){
             String message = update.getMessage().getText().trim();
+            Integer date = update.getMessage().getDate();
             if(message.startsWith("/")){
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 container.retrievCommand(commandIdentifier).execute(update);
@@ -37,6 +36,7 @@ public class MyTB extends TelegramLongPollingBot {
             else{
                 try {
                     Weather weather = JsonParser.parser(message.toLowerCase());
+                    weather.setDate(Instant.ofEpochSecond(date));
                     new SendBotMessage(this)
                             .sendMessage(update.getMessage().getChatId().toString(), weather.toString());
                 } catch (IncorrectCityException e) {

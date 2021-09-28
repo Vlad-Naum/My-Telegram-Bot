@@ -3,17 +3,13 @@ package com.github.VladNaum.telegram_bot.weather;
 import com.github.VladNaum.telegram_bot.exception.IncorrectCityException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
-
 
 public class JsonParser {
-    private static final String apiKey = "04bf680b29855a1596ff020020b6af89";
+    private static final String apiKey = System.getenv("weatherApiKey");
 
     public static Weather parser(String city) throws IncorrectCityException {
         String url = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&lang=ru",
@@ -32,7 +28,7 @@ public class JsonParser {
             String cityName = json.get("name").getAsString();
             String description = weather.get(0).getAsJsonObject().get("description").getAsString();
 
-            return new Weather(cityName, description,temperature, windSpeed, new Date());
+            return new Weather(cityName, description,temperature, windSpeed);
 
         }
         catch(Exception e){
