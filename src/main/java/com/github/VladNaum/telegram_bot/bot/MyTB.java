@@ -8,21 +8,27 @@ import com.github.VladNaum.telegram_bot.service.SendBotMessage;
 import com.github.VladNaum.telegram_bot.service.WeatherServiceImpl;
 import com.github.VladNaum.telegram_bot.weather.JsonParser;
 import com.github.VladNaum.telegram_bot.weather.Weather;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+=======
+>>>>>>> heroku
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.List;
 
+=======
+import java.time.Instant;
+>>>>>>> heroku
 
 @Component
 public class MyTB extends TelegramLongPollingBot {
 
+<<<<<<< HEAD
     @Value("${bot.username}")
     private String userName;
 
@@ -32,6 +38,8 @@ public class MyTB extends TelegramLongPollingBot {
     @Autowired
     private WeatherRepos weatherRepos;
 
+=======
+>>>>>>> heroku
     private final CommandContainer container;
 
     public MyTB(){
@@ -46,12 +54,14 @@ public class MyTB extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()){
             String message = update.getMessage().getText().trim();
+            Integer date = update.getMessage().getDate();
             if(message.startsWith("/")){
                 String commandIdentifier = message.split(" ")[0].toLowerCase();
                 container.retrievCommand(commandIdentifier).execute(update);
             }
             else{
                 try {
+<<<<<<< HEAD
                     if (requestCheck(message.toLowerCase())) {
                         Weather weather = JsonParser.parser(message.toLowerCase());
                         new WeatherServiceImpl(weatherRepos).save(weather);
@@ -59,8 +69,16 @@ public class MyTB extends TelegramLongPollingBot {
                                 .sendMessage(update.getMessage().getChatId().toString(), weather.toString());
                     }
                 } catch (IncorrectCityException | CountOfRequestException e) {
+=======
+                    Weather weather = JsonParser.parser(message.toLowerCase());
+                    weather.setDate(Instant.ofEpochSecond(date));
+                    new SendBotMessage(this)
+                            .sendMessage(update.getMessage().getChatId().toString(), weather.toString());
+                } catch (IncorrectCityException e) {
+>>>>>>> heroku
                     new SendBotMessage(this)
                             .sendMessage(update.getMessage().getChatId().toString(), e.getMessage());
+                    e.printStackTrace();
                 }
 
             }
@@ -87,11 +105,11 @@ public class MyTB extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return userName;
+        return System.getenv("username");
     }
 
     @Override
     public String getBotToken() {
-        return token;
+        return System.getenv("token");
     }
 }
